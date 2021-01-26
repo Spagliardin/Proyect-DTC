@@ -1,4 +1,4 @@
-let invoiceValue = parseInt(prompt('Ingrese el valor de la factura'));
+let invoiceValue = parsefloat(prompt('Ingrese el valor de la factura'));
 
 let quotationDay = 91.5;
 
