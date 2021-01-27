@@ -13,37 +13,49 @@
         </div>
     </header>
     <main>
-        <form action="">
-            <label for="coins">Tipo de Moneda?</label>
-            <select name="tipo de moneda" id="">
-                <option value="">Dolar</option>
-                <option value="">Euro</option>
-                <option value="">Real</option>
-            </select>
+        <div class="containerForm">
+            <form action="">
+                <label for="coins">Tipo de Moneda?</label>
+                <select name="tipo de moneda" id="">
+                    <option value="">Dolar</option>
+                    <option value="">Euro</option>
+                    <option value="">Real</option>
+                </select>
+                <br>
+                    <label for="divisa">Es Divisa?
+                        <input type="checkbox" name="" id="">Si
+                        <input type="checkbox" name="" id="">No 
+                    </label>
+                <br>
+                    <label for="fechaFactura">Fecha de factura:</label>
+                    <input type="date" id="" name="" value="" min="" max="">
+                <br>
+                    <label for="TC Factura">TC factura:</label>
+                    <input type="number" value="91.5">
+                <br>
+                    <label for="valor">Monto Factura?:</label>
+                    <input type="number" min="1" step="any">
+                <br>
+                    <label for="">Fecha Abonado</label>
+                    <input type="date" id="" name="" value="" min="" max="">
+                <br>
+                    <label for="abonado">Monto Abonado</label>
+                    <input type="number" name="" id="">
+                <br>
+            </form>
+        </div>
+        <div class="container-Value-NDC">
+            <span>Corresponde Nota de debito por:
+                <br>
+                <span>$123456</span>
+            </span>
             <br>
-                <label for="divisa">Es Divisa?
-                    <input type="checkbox" name="" id="">Si
-                    <input type="checkbox" name="" id="">No 
-                </label>
-            <br>
-                <label for="fechaFactura">Fecha de factura:</label>
-                <input type="date" id="" name="" value="" min="" max="">
-            <br>
-                <label for="TC Factura">TC factura:</label>
-                <input type="number" value="91.5">
-            <br>
-                <label for="valor">Monto Factura?:</label>
-                <input type="number" min="1" step="any">
-            <br>
-                <label for="">Fecha Abonado</label>
-                <input type="date" id="" name="" value="" min="" max="">
-            <br>
-                <label for="abonado">Monto Abonado</label>
-                <input type="number" name="" id="">
-            <br>
-        </form>
-        <div class="container-Value-ND">
+            <span>Corresponde Nota de Credito:
+                <br>
+                <span>$123456</span>
+            </span>
             
+
         </div>
     </main>
     <footer>

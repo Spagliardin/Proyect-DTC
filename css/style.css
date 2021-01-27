@@ -7,3 +7,17 @@ body {
   height: 15vh;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
   background-color: whitesmoke; }
+
+.containerForm {
+  width: 40vw;
+  height: 60vh;
+  margin: 10vh 10vw;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  background-color: whitesmoke; }
+
+.container-Value-NDC {
+  width: 40vw;
+  height: 60vh;
+  margin: 10vw;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  background-color: whitesmoke; }
