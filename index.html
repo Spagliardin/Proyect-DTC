@@ -9,10 +9,10 @@
 <body>
     <header>
         <div class="containerheader">
-            <img src="" alt="Logo">
+            <img src="./icons/Azul Oscuro Bloques Comercial Logo.png" alt="Logo">
         </div>
     </header>
-    <main>
+    <main class="contentMain">
         <div class="containerForm">
             <form action="">
                 <label for="coins">Tipo de Moneda?</label>
@@ -21,41 +21,34 @@
                     <option value="">Euro</option>
                     <option value="">Real</option>
                 </select>
-                <br>
                     <label for="divisa">Es Divisa?
                         <input type="checkbox" name="" id="">Si
                         <input type="checkbox" name="" id="">No 
                     </label>
-                <br>
-                    <label for="fechaFactura">Fecha de factura:</label>
-                    <input type="date" id="" name="" value="" min="" max="">
-                <br>
-                    <label for="TC Factura">TC factura:</label>
-                    <input type="number" value="91.5">
-                <br>
-                    <label for="valor">Monto Factura?:</label>
-                    <input type="number" min="1" step="any">
-                <br>
-                    <label for="">Fecha Abonado</label>
-                    <input type="date" id="" name="" value="" min="" max="">
-                <br>
-                    <label for="abonado">Monto Abonado</label>
-                    <input type="number" name="" id="">
-                <br>
+                    <label for="fechaFactura">Fecha de factura:
+                        <input type="date" id="" name="" value="" min="" max="">
+                    </label>
+                    <label for="TC Factura">TC factura:
+                        <input type="number" value="91.5">
+                    </label>
+                    <label for="valor">Monto Factura?:
+                        <input type="number" min="1" step="any">
+                    </label>  
+                    <label for="">Fecha Abonado
+                        <input type="date" id="" name="" value="" min="" max="">
+                    </label>
+                    <label for="abonado">Monto Abonado
+                        <input type="number" name="" id="">
+                    </label>
             </form>
         </div>
         <div class="container-Value-NDC">
             <span>Corresponde Nota de debito por:
-                <br>
                 <span>$123456</span>
             </span>
-            <br>
             <span>Corresponde Nota de Credito:
-                <br>
                 <span>$123456</span>
             </span>
-            
-
         </div>
     </main>
     <footer>
@@ -63,7 +56,7 @@
     </footer>
 
 
-
+<script src="./js/functions.js"></script>
 <script src="./js/index.js"></script>
 </body>
 </html>
