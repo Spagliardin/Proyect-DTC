@@ -1,7 +1,11 @@
 let invoiceValue = parseFloat(prompt('Ingrese el valor de la factura'));
 let quotationDay = 91.5;  // Este valor lo dará banco nacion
 
-alert(divide(invoiceValue, quotationDay));
+let resultsDivicion = divide(invoiceValue, quotationDay)
+
+alert(resultsDivicion);
+
+console.log(resultsDivicion.toString().length);
 
 let day = parseInt(prompt('Ingrese el Dia de la fecha'));
 let month = parseInt(prompt('ingrese el Mes de la fecha'));
