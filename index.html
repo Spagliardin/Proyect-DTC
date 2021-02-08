@@ -32,22 +32,36 @@
                         <input id="tc-Invoice" type="number">
                     </label>
                     <label for="valor">Monto Factura?:
-                        <input type="number" min="1" step="any">
+                        <input id="value-Invoice" type="number" min="1" step="any">
                     </label>  
+                    <label for="iva"> IVA Factura
+                        <select name="tipo de IVA" id="SelectIVA">
+                            <option value="">21%</option>
+                            <option value="">10.5%</option>
+                        </select>
+                    </label>
+                    <label for="">Valor FC sin IVA
+                        <input id="value-Without-Iva" type="number">
+                    </label>
+                    <label for="FcEnMonedaLocal">Valor factura en moneda Local
+                        <input id="Value-InvoiceMoneyLocal" type="number">
+                    </label>
                     <label for="">Fecha Abonado
                         <input type="date" id="" name="" value="" min="" max="">
                     </label>
+                    <label for="TcDiaAbonado"> TC dia Abonado
+                        <input type="number">
+                    </label>
                     <label for="abonado">Monto Abonado
-                        <input type="number" name="" id="">
+                        <input type="number" name="" id="amount-Paid">
                     </label>
             </form>
         </div>
         <div class="container-Value-NDC">
             <span>Corresponde Nota de debito por:
-                <span>$123456</span>
+                <span id="ND"></span>
             </span>
             <span>Corresponde Nota de Credito:
-                <span>$123456</span>
             </span>
         </div>
     </main>

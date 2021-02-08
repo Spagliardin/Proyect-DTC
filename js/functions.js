@@ -51,4 +51,12 @@ function resultTypeCoin(){
                 return real
             }
         }
-    }
+}
+
+function invoiceWithoutIva(valueInvoice, iva){
+    return valueInvoice * [(100 - iva) / 100]
+}
+
+function valueInvoiceMoneyLocal(valueInvoice, tc){
+    return valueInvoice * tc
+}
