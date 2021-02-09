@@ -1,3 +1,14 @@
+const COINS = {
+    DOLAR: "dolar",
+    EURO: "euro",
+    REAL: "real"
+};
+
+const TYPE_COINS = {
+    BILLETE: "billete",
+    DIVISA: "divisa"
+};
+
 function divide(value, quotation) {
     return value / quotation;
 }
@@ -29,28 +40,26 @@ function typeDivisaEuro() {
 }
 
 function resultTypeCoin() {
-    let typeCoin = ['DOLAR', 'EURO', 'REAL'];
-    for (i = 0; i < typeCoin.length; i++) {
-        let selectTypeCoin = prompt('favor de elegir un tipo de moneda');
-        while (selectTypeCoin == null || selectTypeCoin == '' || selectTypeCoin.toUpperCase().trim() != 'DOLAR' && selectTypeCoin.toUpperCase().trim() != 'EURO') {
-            selectTypeCoin = prompt('favor de elegir un tipo de moneda');
-        }
-        if (selectTypeCoin.toUpperCase().trim() == typeCoin[0]) {
-            dolar = new Dolar(87.91, 92.75);
-            dolar = typeDivisaDolar()
-            return dolar
-        }
-        else if (selectTypeCoin.toUpperCase().trim() == typeCoin[1]) {
-            euro = new Euro(105.28, 109.25);
-            euro = typeDivisaEuro()
-            return euro
-
-        }
-        else if (selectTypeCoin.toUpperCase().trim() == typeCoin[3]) {
-            real = 1730
-            return real
-        }
+    var selectTypeCoin;
+    while (!isValidCoin(selectTypeCoin)) {
+        selectTypeCoin = prompt('favor de elegir un tipo de moneda');
     }
+    selectTypeCoin = selectTypeCoin.toLowerCase;
+
+    switch (selectTypeCoin) {
+        case DOLAR:
+            return new Dolar(87.91, 92.75);;
+        case EURO:
+            return new Euro(105.28, 109.25);;
+        // Te olvidaste el real ;)
+        case REAL:
+            return null;
+
+    }
+}
+
+function isValidCoin(coin) {
+    return Object.values(COINS).includes(coin);
 }
 
 function invoiceWithoutIva(valueInvoice, iva) {
