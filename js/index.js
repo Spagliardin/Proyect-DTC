@@ -28,12 +28,12 @@ let valueIva = parseFloat(prompt('ingrese valor IVA'))
 let amountMoney = document.getElementById('value-Invoice')
 amountMoney.setAttribute('value', valueInvoice)
 
-if (valueIva == IVA21){
+if (valueIva == IVA21) {
     let getValueWithoutIva21 = document.getElementById('value-Without-Iva')
     getValueWithoutIva21.setAttribute('value', invoiceWithoutIva(valueInvoice, valueIva))
 }
 
-else if(valueIva == IVA105){
+else if (valueIva == IVA105) {
     let getValueWithoutIva105 = document.getElementById('value-Without-Iva')
     getValueWithoutIva105.setAttribute('value', invoiceWithoutIva(valueInvoice, valueIva))
 }
@@ -53,7 +53,7 @@ getIdAmountPaid.setAttribute('value', amountPaid)
 
 // get value ND // obtener valor de la nota de debito (provisorio mal resuelto)
 
-function valueND(valueInvoiceMoneyLocal, amountPaid){
+function valueND(valueInvoiceMoneyLocal, amountPaid) {
     return amountPaid - valueInvoiceMoneyLocal
 }
 
