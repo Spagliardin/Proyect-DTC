@@ -1,29 +1,40 @@
-let select = document.getElementById('selectCoin');
+let getingTypeCoin = document.getElementById('selectCoin').addEventListener('change', getTypeCoin)
+let getTcInvoice = document.getElementById('tc-Invoice')
 
-// get type coin and add input type number // obtener tipo de moneda y agregar al input tipo numero
+let typeOfCoin = new TypeCoin(90, 100, 1220)
+    if(getingTypeCoin == 'Dolar'){
+        getTcInvoice.setAttribute('value', typeOfCoin.dolar)
+    }
+    else if(getingTypeCoin == 'Euro'){
+        getTcInvoice.setAttribute('value', typeOfCoin.euro)
+    }
+    else if(getingTypeCoin == 'Real'){
+        getTcInvoice.setAttribute('value', typeOfCoin.real)
+    }
 
 
-let tcInvoice = document.getElementById("tc-Invoice")
-tcInvoice.setAttribute('value', resultTypeCoin())
-
+function getTypeCoin(){
+    let typeOfCoin = document.getElementById('selectCoin');
+    let textValue = typeOfCoin.options[typeOfCoin.selectedIndex].text;
+}
 
 // get date invoice // obtener fecha de la factura
 
-let date = new Date()
-let day = String(date.getDay() + 1).padStart(2, '0')
-let month = String(date.getMonth()).padStart(2, '0')
-let year = date.getFullYear()
+// let date = new Date()
+// let day = String(date.getDay() + 1).padStart(2, '0')
+// let month = String(date.getMonth()).padStart(2, '0')
+// let year = date.getFullYear()
 
-date = day + '/' + month + '/' + year
+// date = day + '/' + month + '/' + year
 
-let todaysDate = new TodaysDate(day, month, year)
+// let todaysDate = new TodaysDate(day, month, year)
 
 // get amount money for user and get value invoice without IVA // obtener monto factura por usuario y su valor sin IVA
 
 const IVA21 = 21
 const IVA105 = 10.5
-let valueInvoice = parseInt(prompt('Ingrese monto total de la factura'))
-let valueIva = parseFloat(prompt('ingrese valor IVA'))
+// let valueInvoice = parseInt(prompt('Ingrese monto total de la factura'))
+// let valueIva = parseFloat(prompt('ingrese valor IVA'))
 
 let amountMoney = document.getElementById('value-Invoice')
 amountMoney.setAttribute('value', valueInvoice)
@@ -47,7 +58,7 @@ getValueInvoiceMoneyLocal.setAttribute('value', valueInvoiceMoneyLocal(valueInvo
 
 //get amount paid // obtener monto abonado
 
-let amountPaid = parseInt(prompt('Ingrese valor Abonado'))
+// let amountPaid = parseInt(prompt('Ingrese valor Abonado'))
 let getIdAmountPaid = document.getElementById('amount-Paid')
 getIdAmountPaid.setAttribute('value', amountPaid)
 

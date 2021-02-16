@@ -1,3 +1,13 @@
+// objet Type Coin
+
+function TypeCoin (dolar, euro, real){
+    this.dolar = dolar
+    this.euro = euro
+    this.real= real
+}
+
+
+
 //Objet Dolar
 
 function Dolar(dolarDivisa, dolarBillete){

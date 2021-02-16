@@ -38,7 +38,8 @@ body {
         border: none;
         border-radius: 4px; }
       .contentMain .containerForm form label {
-        display: inline-block; }
+        display: inline-block;
+        margin-bottom: 10px; }
   .contentMain .container-Value-NDC {
     width: 40vw;
     height: 60vh;
