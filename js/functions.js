@@ -1,80 +1,66 @@
-function selectionTypeCoin(valueTypeCoin){
-let typeOfCoin = new TypeCoin(90, 100, 1220)
-    if(getingTypeCoin == 'Dolar'){
-        valueTypeCoin = setAttribute('value', typeOfCoin.dolar)
-    }
-    else if(getingTypeCoin == 'Euro'){
-        valueTypeCoin = setAttribute('value', typeOfCoin.euro)
-    }
-    else if(getingTypeCoin == 'Real'){
-        valueTypeCoin = setAttribute('value', typeOfCoin.real)
-    }
-
-    console.log(valueTypeCoin)
+function setValueCoin(){ 
+    // Me traigo el valor del tipo de cambio
+    let valueCoin = getValueCoin()
+    // Tomo el elemento tipo de cambio de factura y le agrego el atributo valor del objeto
+   document.getElementById('tc-Invoice').setAttribute('value', valueCoin)
 }
 
-
-
-function typeDivisaDolar(){
-    // type = prompt('Es Billete o Divisa?')
-    //     while(type == null || type == '' || type.toLowerCase().trim() != 'billete' && type.toLowerCase().trim() != 'divisa'){
-    //         type = prompt('Es Billete o Divisa?')
-    //     }
-        if(type.toUpperCase().trim() == 'DIVISA'){
-            return dolar.dolarDivisa
+function getValueCoin(){
+    // Uso de objeto para darle valor literal al tipo de cambio
+    let valueCoin = new TypeCoin(90, 100, 1220)
+    // Me traigo el texto del select
+    let typeOfCoin = document.getElementById('selectCoin');
+    typeOfCoin = typeOfCoin.options[typeOfCoin.selectedIndex].text;
+    // Valído el tipo de string que es el Select
+        if (typeOfCoin == 'Dolar'){
+            typeOfCoin = valueCoin.dolar
         }
-        else{
-            return dolar.dolarBillete
-        }  
-}
-
-function typeDivisaEuro(){
-    // type = prompt('Es Billete o Divisa?')
-    //     while(type == null || type == '' || type.toLowerCase().trim() != 'billete' && type.toLowerCase().trim() != 'divisa'){
-    //         type = prompt('Es Billete o Divisa?')
-    //     }
-        if(type.toUpperCase().trim() == 'DIVISA'){
-            return euro.euroDivisa
+        else if(typeOfCoin == 'Euro'){
+            typeOfCoin = valueCoin.euro
         }
-        else{
-           return euro.euroBillete
-        }  
+        else if(typeOfCoin == 'Real'){
+            typeOfCoin = valueCoin.real
+        }
+    return typeOfCoin
 }
 
-// function resultTypeCoin(){
-//     let typeCoin = ['DOLAR', 'EURO', 'REAL'];
-//         for (i = 0; i < typeCoin.length; i++){
-//             let selectTypeCoin = prompt('favor de elegir un tipo de moneda');
-//             while (selectTypeCoin == null || selectTypeCoin == '' || selectTypeCoin.toUpperCase().trim() != 'DOLAR' && selectTypeCoin.toUpperCase().trim() != 'EURO'){
-//                 selectTypeCoin = prompt('favor de elegir un tipo de moneda');
-//             }
-//             if(selectTypeCoin.toUpperCase().trim() == typeCoin[0]){
-//                 dolar = new Dolar(87.91,92.75);
-//                 dolar = typeDivisaDolar()
-//                 return dolar           
-//             }
-//             else if (selectTypeCoin.toUpperCase().trim() == typeCoin[1]){
-//                 euro = new Euro(105.28,109.25);
-//                 euro = typeDivisaEuro()
-//                 return euro
-                
-//             }
-//             else if (selectTypeCoin.toUpperCase().trim() == typeCoin[3]){
-//                 real = 1730
-//                 return real
-//             }
-//         }
-// }
+function setValueInvoiceInPesos (){
+    let valueInvoice = document.getElementById('value-Invoice');
+    let userValueInvoice = valueInvoice.value;
 
-function invoiceWithoutIva(valueInvoice, iva){
-    return valueInvoice * [(100 - iva) / 100]
+    let valueCoin = getValueCoin();
+
+    let resultInvoicedInPesos = getResultInvoicedInPesos(valueCoin, userValueInvoice)
+
+    document.getElementById('invoice-Pesos').setAttribute('value', resultInvoicedInPesos)
 }
 
-function valueInvoiceMoneyLocal(valueInvoice, tc){
-    return valueInvoice * tc
+function getResultInvoicedInPesos(valueInvoice, valueCoin){
+    return valueInvoice * valueCoin
 }
 
+function setAmountPay(){
+    let valueCoinPay = document.getElementById('value-Coin-Pay').value
+    let valueInvoice = document.getElementById('value-Invoice');
+    let userValueInvoice = valueInvoice.value;
+   
+    let valueInvoicePay = getResultInvoicedInPesos(userValueInvoice, valueCoinPay)
 
-function divide (value, quotation) {
-    return value / quotation;
+    document.getElementById('value-Pay').setAttribute('value', valueInvoicePay)
+}
+
+function ndGenerate (){
+    let valuePayInvoice = document.getElementById('value-Pay').value;
+    let amountPaid = document.getElementById('amount-Paid')
+    let userAmountPaid = amountPaid.value;
+
+    let resultNd = deduct(valuePayInvoice, userAmountPaid)
+
+    let spancontent = document.createTextNode(resultNd)
+
+    let textND = document.getElementById('ND').appendChild(spancontent)
+}
+
+function deduct (valuePayInvoice, userAmountPaid){
+    return valuePayInvoice - userAmountPaid
 }

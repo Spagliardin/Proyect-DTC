@@ -7,7 +7,6 @@ function TypeCoin (dolar, euro, real){
 }
 
 
-
 //Objet Dolar
 
 function Dolar(dolarDivisa, dolarBillete){

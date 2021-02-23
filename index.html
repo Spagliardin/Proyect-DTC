@@ -21,36 +21,32 @@
                     <option value="euro">Euro</option>
                     <option value="real">Real</option>
                 </select>
-                    <label for="divisa">Es Divisa?
-                        <input type="checkbox" name="" id="">Si
-                        <input type="checkbox" name="" id="">No 
-                    </label>
+                    <label for="valor">Monto Factura?:
+                        <input id="value-Invoice" type="number">
+                    </label>  
                     <label for="fechaFactura">Fecha de factura:
                         <input type="date" id="" name="" value="" min="" max="">
                     </label>
-                    <label for="TC Factura">TC factura:
+                    <label for="TC Factura">TC Facturado:
                         <input id="tc-Invoice" type="number">
                     </label>
-                    <label for="valor">Monto Factura?:
-                        <input id="value-Invoice" type="number" min="1" step="any">
-                    </label>  
+                    <label for="Facturado en $(pesos arg)">Facturado en $(pesos arg)
+                        <input id="invoice-Pesos" type="number">
+                    </label>
                     <label for="iva"> IVA Factura
                         <select name="tipo de IVA" id="SelectIVA">
                             <option value="">21%</option>
                             <option value="">10.5%</option>
                         </select>
                     </label>
-                    <label for="">Valor FC sin IVA
-                        <input id="value-Without-Iva" type="number">
-                    </label>
-                    <label for="FcEnMonedaLocal">Valor factura en moneda Local
-                        <input id="Value-InvoiceMoneyLocal" type="number">
-                    </label>
                     <label for="">Fecha Abonado
                         <input type="date" id="" name="" value="" min="" max="">
                     </label>
                     <label for="TcDiaAbonado"> TC dia Abonado
-                        <input type="number">
+                        <input id="value-Coin-Pay" type="number" value="150">
+                    </label>
+                    <label for="montoCorrespondienteAAbonar"> Correspondiente a abonar:
+                        <input id="value-Pay" type="number" >
                     </label>
                     <label for="abonado">Monto Abonado
                         <input type="number" name="" id="amount-Paid">
