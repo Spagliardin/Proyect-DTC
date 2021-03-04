@@ -15,3 +15,27 @@ $('#value-Invoice').change(setAmountPay)
 
 $('#amount-Paid').change(ndGenerate)
 
+let dateInvoice = $('#dateInvoice').val()
+let UsertDateInvoice = getDate(dateInvoice)
+
+$('#button').click(function () {
+    $.ajax({
+        header:{
+        Authorization: 'BEARER ' + 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDYxODU5MTAsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJzcGFnbGlhcmRpLm5AZ21haWwuY29tIn0.P7rz1ihON_42rMf_XDjCcpKx3bGTg5uOiMR18rPbySLHSvN_LiKNrfnBlltJKPTsykamGtQSOK1OEi7kXLcIeg',
+        },
+        url: 'https://api.estadisticasbcra.com/usd_of',
+        type: 'GET',
+        dataType: 'json',     
+        
+        
+
+
+    }).done(function(resultado){
+        console.log(resultado)  
+    })
+    .fail(function(xhr, status, error){
+        console.log(xhr)
+        console.log(status)
+        console.log(error)
+    })
+})

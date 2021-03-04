@@ -21,13 +21,6 @@ function Euro(euroDivisa, euroBillete){
     this.euroBillete = euroBillete;
 }
 
-// objeto today`s Date - fecha de hoy
-
-function TodaysDate(day, month, year){
-    this.day = day;
-    this.month = month;
-    this.year = year;
-}
 //objet invoice - Factura
 
 function Invoice(dayInvoice, monthInvoice, yearInvoice, amountMoney, typeCoin){

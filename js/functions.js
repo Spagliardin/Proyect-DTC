@@ -64,3 +64,9 @@ function ndGenerate (){
 function deduct (valuePayInvoice, userAmountPaid){
     return valuePayInvoice - userAmountPaid
 }
+
+//Obtener Fecha puesta por el usuario
+function getDate(e){
+    let date = moment(e).format("DD-MM-YYYY");
+    return date
+  }
