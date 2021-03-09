@@ -1,37 +1,65 @@
 
 // Tomar el valor de select y agregar el resultado (mediante evento) en el input tipo de cambio
-$('#selectCoin').change(setValueCoin)
+$('#selectCoin').on('change', setValueCoin);
 
 // Tomar el valor de la factura y añadir evento de calculo para valor factura en pesos
 
-$('#value-Invoice').change(setValueInvoiceInPesos)
+$('#value-Invoice').change(setValueInvoiceInPesos);
 
 // Por el momento TC dia Abonado toma el valor por defecto del htm (150)
 
 // Tomar el valor de la factura y Obtener el monto correspondiente a abonar
 
-$('#value-Invoice').change(setAmountPay)
+$('#value-Invoice').change(setAmountPay);
 // Toma el valor de factura en pesos y el valor correspondiente, restalos y crea una nota de debito
 
-$('#amount-Paid').change(ndGenerate)
+$('#amount-Paid').change( () => {
+    valueInNd = ndGenerate()
+    $('#ND').text(valueInNd.text())
+    $('#ND').fadeIn('slow')
+});
 
-let dateInvoice = $('#dateInvoice').val()
-let UsertDateInvoice = getDate(dateInvoice)
+function getValueIva(){
+    let valueIva = new Iva (21, 10.5)
 
-$('#button').click(function () {
+    let typeIva = $('#iva option:selected').val()
+
+    if(typeIva == 21){
+        typeIva = valueIva.IVA21
+    }
+
+    else if (typeIva == 105){
+        typeIva = valueIva.IVA105
+    }
+
+    return typeIva
+}
+
+
+$('#dateInvoice').change(() => {
+    console.log(getDate($('#dateInvoice')))
+})
+
+
+$('#boton').click( () => {
     $.ajax({
-        header:{
-        Authorization: 'BEARER ' + 'eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDYxODU5MTAsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJzcGFnbGlhcmRpLm5AZ21haWwuY29tIn0.P7rz1ihON_42rMf_XDjCcpKx3bGTg5uOiMR18rPbySLHSvN_LiKNrfnBlltJKPTsykamGtQSOK1OEi7kXLcIeg',
-        },
-        url: 'https://api.estadisticasbcra.com/usd_of',
+        url: './usd_of.json',
         type: 'GET',
-        dataType: 'json',     
-        
+        dataType: 'json',
+    })
+    .done(function(resultado){
+        console.log(resultado[0].d)
+        console.log(resultado[0].v)
+
+        for(let i = 0; i < resultado.length; i++){
+            console.log(resultado[i].d)
+            if(valueDate == resultado[i].d){
+                console.log( resultado[i].v)
+            }
+
+        }
         
 
-
-    }).done(function(resultado){
-        console.log(resultado)  
     })
     .fail(function(xhr, status, error){
         console.log(xhr)
@@ -39,3 +67,5 @@ $('#button').click(function () {
         console.log(error)
     })
 })
+
+

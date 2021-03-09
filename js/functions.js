@@ -57,8 +57,10 @@ function ndGenerate (){
     
 
     let resultNd = deduct(valuePayInvoice, userAmountPaid)
-
-    let textND = $('#ND').text(resultNd)
+    
+    let TextND = ('$' + resultNd).css({'font-size': '50px', 'color': '#000033'})
+    
+    return TextND
 }
 
 function deduct (valuePayInvoice, userAmountPaid){
