@@ -1,18 +1,12 @@
-function setValueCoin(){ 
-    // Me traigo el valor del tipo de cambio
-    let valueCoin = getValueCoin()
-    // Tomo el elemento tipo de cambio de factura y le agrego el atributo valor del objeto
+function setValueCoin(valueCoin){ 
     $('#tc-Invoice').val(valueCoin)
 }
 
-function getValueCoin(){
-    // Uso de objeto para darle valor literal al tipo de cambio
-    let valueCoin = new TypeCoin(90, 100, 1220)
-    // Me traigo el texto del select
+function getValueCoin(valueDolar, valueEuro, valueReal){
+    let valueCoin = new TypeCoin(valueDolar, valueEuro, valueReal)
     
     let typeOfCoin = $('#selectCoin option:selected').val().toUpperCase()
 
-    // Valído el tipo de string que es el Select
         if (typeOfCoin == 'DOLAR'){
             typeOfCoin = valueCoin.dolar
         }
@@ -26,11 +20,9 @@ function getValueCoin(){
 }
 
 
-function setValueInvoiceInPesos (){
+function setValueInvoiceInPesos (valueCoin){
 
     let userValueInvoice =  $('#value-Invoice').val();
-
-    let valueCoin = getValueCoin();
 
     let resultInvoicedInPesos = getInvoicedResultInPesos(valueCoin, userValueInvoice)
 
@@ -41,33 +33,12 @@ function getInvoicedResultInPesos(valueInvoice, valueCoin){
     return valueInvoice * valueCoin
 }
 
-function setAmountPay(){
-    let valueCoinPay = $('#value-Coin-Pay').val()
+function setAmountPay(valueCoin){
     let userValueInvoice = $('#value-Invoice').val();
-    
-   
-    let valueInvoicePay = getInvoicedResultInPesos(userValueInvoice, valueCoinPay)
-
-    $('#value-Pay').val(valueInvoicePay)
+    let valueInvoicePay = getInvoicedResultInPesos(userValueInvoice, valueCoin);
+    $('#value-Pay').val(valueInvoicePay);
 }
 
-function ndGenerate (){
-    let valuePayInvoice = $('#value-Pay').val();
-    let userAmountPaid = $('#amount-Paid').val()
-    
-
-    let resultNd = deduct(valuePayInvoice, userAmountPaid)
-    
-    let TextND = ('$' + resultNd).css({'font-size': '50px', 'color': '#000033'})
-    
-    return TextND
-}
-
-function deduct (valuePayInvoice, userAmountPaid){
-    return valuePayInvoice - userAmountPaid
-}
-
-//Obtener Fecha puesta por el usuario
 function getDate(e){
     let date = moment(e).format("DD-MM-YYYY");
     return date

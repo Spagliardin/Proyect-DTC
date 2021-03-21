@@ -1,5 +1,3 @@
-// objet Type Coin
-
 function TypeCoin (dolar, euro, real){
     this.dolar = dolar
     this.euro = euro

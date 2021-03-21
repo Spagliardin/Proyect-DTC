@@ -1,23 +1,28 @@
+$('#selectCoin').change(setValueCoin);
 
-// Tomar el valor de select y agregar el resultado (mediante evento) en el input tipo de cambio
-$('#selectCoin').on('change', setValueCoin);
+let whiteMode = false;
 
-// Tomar el valor de la factura y añadir evento de calculo para valor factura en pesos
+$('#toggle').click(function() {
+    let checked = $(this).is(':checked');
+    if(checked){
+        whiteMode = true;
+        $('body').css('background-color', 'white');
+        $('#spanToggle').text('Black')
+        $('#spanToggle').css('color', 'black');
+    }
+    else{
+        whiteMode = false;
+        $('body').css('background-color', 'black');
+        $('#spanToggle').text('White')
+        $('#spanToggle').css('color', 'white');  
+    }
+    localStorage.setItem('whiteMode', whiteMode);
 
-$('#value-Invoice').change(setValueInvoiceInPesos);
-
-// Por el momento TC dia Abonado toma el valor por defecto del htm (150)
-
-// Tomar el valor de la factura y Obtener el monto correspondiente a abonar
-
-$('#value-Invoice').change(setAmountPay);
-// Toma el valor de factura en pesos y el valor correspondiente, restalos y crea una nota de debito
-
-$('#amount-Paid').change( () => {
-    valueInNd = ndGenerate()
-    $('#ND').text(valueInNd.text())
-    $('#ND').fadeIn('slow')
 });
+
+window.onstorage = () => {
+    console.log(JSON.parse(window.localStorage.getItem('whiteMode')))
+}
 
 function getValueIva(){
     let valueIva = new Iva (21, 10.5)
@@ -36,36 +41,75 @@ function getValueIva(){
 }
 
 
+
 $('#dateInvoice').change(() => {
-    console.log(getDate($('#dateInvoice')))
-})
-
-
-$('#boton').click( () => {
-    $.ajax({
-        url: './usd_of.json',
-        type: 'GET',
-        dataType: 'json',
-    })
-    .done(function(resultado){
-        console.log(resultado[0].d)
-        console.log(resultado[0].v)
-
-        for(let i = 0; i < resultado.length; i++){
-            console.log(resultado[i].d)
-            if(valueDate == resultado[i].d){
-                console.log( resultado[i].v)
+    let valueDateUser = $('#dateInvoice').val()
+        $.ajax({
+            url: './usd_of.json',
+            type: 'GET',
+            dataType: 'json',
+        })
+        .done(function(resultado){
+            function getTcInvoicedForDate(){
+                for(let i = 0; i < resultado.length; i++){
+                   
+                    if(resultado[i].d == valueDateUser){
+                        return resultado[i].v
+                    }                          
+                }
             }
 
-        }
-        
+            let tcInvoicedForDate = getTcInvoicedForDate();
+            let valueCoin = getValueCoin(tcInvoicedForDate, 180, 210);
+            setValueCoin(valueCoin);
+            setValueInvoiceInPesos(valueCoin);
+            $('#value-Invoice').change(setValueInvoiceInPesos);
 
-    })
-    .fail(function(xhr, status, error){
-        console.log(xhr)
-        console.log(status)
-        console.log(error)
-    })
+        })
+        .fail(function(xhr, status, error){
+            console.log(xhr)
+            console.log(status)
+            console.log(error)
+        })    
 })
+
+
+$('#datePay').change(() => {
+    let valueDateUser = $('#datePay').val()
+        $.ajax({
+            url: './usd_of.json',
+            type: 'GET',
+            dataType: 'json',
+        })
+        .done(function(resultado){            
+            function getTcInvoicedForDate(){
+                for(let i = 0; i < resultado.length; i++){
+                   
+                    if(resultado[i].d == valueDateUser){
+                        return resultado[i].v
+                    }                          
+                }
+            }
+
+            let tcDatePayForUser = getTcInvoicedForDate();
+            let valueCoin = getValueCoin(tcDatePayForUser, 180, 210);
+
+            $('#valueCoinPay').val(valueCoin);
+            setAmountPay(valueCoin);
+        })
+        .fail(function(xhr, status, error){
+            console.log(xhr)
+            console.log(status)
+            console.log(error)
+        })    
+})
+
+$('#amount-Paid').change( () => {
+    let valuePay = $('#value-Pay').val();
+    let userAmountPaid = $('#amount-Paid').val();
+    let valueInNd = valuePay - userAmountPaid
+    $('#ND').text('$' + valueInNd).css({'font-size': '50px', 'color': 'red'});
+    $('#ND').fadeIn('slow')
+});
 
 

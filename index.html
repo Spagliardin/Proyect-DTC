@@ -32,7 +32,7 @@
                     <label for="TC Factura">TC Facturado:
                         <input id="tc-Invoice" type="number">
                     </label>
-                    <label for="Facturado en $(pesos arg)">Facturado en $(pesos arg)
+                    <label for="FacturadoEn$(pesosArg)">Facturado en $(pesos arg)
                         <input id="invoice-Pesos" type="number">
                     </label>
                     <label for="iva"> IVA Factura
@@ -42,26 +42,34 @@
                         </select>
                     </label>
                     <label for="">Fecha Abonado
-                        <input type="date" id="" name="" value="" min="" max="">
+                        <input type="date" id="datePay" name="" value="" min="" max="">
                     </label>
                     <label for="TcDiaAbonado"> TC dia Abonado
-                        <input id="value-Coin-Pay" type="number" value="150">
+                        <input id="valueCoinPay" type="number" value="">
                     </label>
                     <label for="montoCorrespondienteAAbonar"> Correspondiente a abonar:
                         <input id="value-Pay" type="number" >
                     </label>
                     <label for="abonado">Monto Abonado
-                        <input type="number" name="" id="amount-Paid">
-                    </label>
-                    <input id="boton" type="button" value="API">
+                        <input type="number" id="amount-Paid">
             </form>
         </div>
+
+        <div class="containerToggle">
+            <span id="spanToggle">White</span>
+            <input type="checkbox" id="toggle">
+            <label class="toggle-track" for="toggle">
+                <span class="toggle-track__indicator"></span>
+            </label>
+        </div>
+
         <div class="container-Value-NDC">
-            <span>Corresponde Nota de debito por:
-                <span id="ND"></span>
-            </span>
-            <span>Corresponde Nota de Credito:
-            </span>
+            <div class="content-nd">
+                <span>Corresponde Nota de debito por:
+                    <br>
+                    <span id="ND"></span>
+                </span>
+            </div>
         </div>
     </main>
     <footer>
