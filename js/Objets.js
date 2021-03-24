@@ -5,6 +5,6 @@ function TypeCoin (dolar, euro, real){
 }
 
 function Iva (IVA21, IVA105){
-    this.IVA21 = IVA21,
+    this.IVA21 = IVA21
     this.IVA105 = IVA105
 }

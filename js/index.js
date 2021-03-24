@@ -1,7 +1,6 @@
 $('#selectCoin').change(setValueCoin);
 
 let whiteMode = false;
-
 $('#toggle').click(function() {
     let checked = $(this).is(':checked');
     if(checked){
@@ -23,24 +22,6 @@ $('#toggle').click(function() {
 window.onstorage = () => {
     console.log(JSON.parse(window.localStorage.getItem('whiteMode')))
 }
-
-function getValueIva(){
-    let valueIva = new Iva (21, 10.5)
-
-    let typeIva = $('#iva option:selected').val()
-
-    if(typeIva == 21){
-        typeIva = valueIva.IVA21
-    }
-
-    else if (typeIva == 105){
-        typeIva = valueIva.IVA105
-    }
-
-    return typeIva
-}
-
-
 
 $('#dateInvoice').change(() => {
     let valueDateUser = $('#dateInvoice').val()
@@ -105,11 +86,17 @@ $('#datePay').change(() => {
 })
 
 $('#amount-Paid').change( () => {
+    let reductIva = (getValueIva() - 100) / (-100)
     let valuePay = $('#value-Pay').val();
     let userAmountPaid = $('#amount-Paid').val();
-    let valueInNd = valuePay - userAmountPaid
-    $('#ND').text('$' + valueInNd).css({'font-size': '50px', 'color': 'red'});
+    let valueInNd = () => (valuePay - userAmountPaid) * reductIva
+    let valueIva = () => getValueIva() * (valuePay - userAmountPaid) / 100
+    console.log(valueIva())
+    $('#ND').text('NETO' +'$' + valueInNd()).css({'font-size': '50px', 'color': 'red'});
     $('#ND').fadeIn('slow')
+    $('#ND').append(`
+    <br>
+    <span> ${'IVA' + '$'} ${valueIva()} </span>`
+    )
 });
-
 

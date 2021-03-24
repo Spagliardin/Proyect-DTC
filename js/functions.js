@@ -39,7 +39,24 @@ function setAmountPay(valueCoin){
     $('#value-Pay').val(valueInvoicePay);
 }
 
+function getValueIva(){
+    let valueIva = new Iva (21, 10.5)
+
+    let typeIva = $('#iva option:selected').val()
+
+    if(typeIva == 21){
+        typeIva = valueIva.IVA21
+    }
+
+    else if (typeIva == 105){
+        typeIva = valueIva.IVA105
+    }
+
+    return typeIva
+}
+
 function getDate(e){
     let date = moment(e).format("DD-MM-YYYY");
     return date
-  }
+}
+
