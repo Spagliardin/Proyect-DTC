@@ -59,4 +59,3 @@ function getDate(e){
     let date = moment(e).format("DD-MM-YYYY");
     return date
 }
-
